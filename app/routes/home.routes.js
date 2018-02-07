@@ -1,0 +1,6 @@
+//page single noticia
+module.exports = function(app) {
+  app.get('/', function(req, res){
+    res.render('../views/home/index')
+  });
+}
