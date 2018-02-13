@@ -1,11 +1,12 @@
 //page single noticia
-module.exports = function(app) {
-  app.get('/noticia', function(req, res){
+module.exports = function(application) {
+  application.get('/noticia', function(req, res){
 
     //modulo conexão com banco
-    var connection = app.config.db();
+    var connection = application.config.db();
+    var noticiasModel = application.app.models.noticiasModel;
 
-    connection.query('select * from noticias where id_noticia = 1', function(err, data){ //sql requisition
+    noticiasModel.getNoticia(connection, function(err, data){ //sql requisition
       if(err){ //if there's a error
         console.log(err); //show error
       } else {
@@ -13,5 +14,4 @@ module.exports = function(app) {
       }
     });
   });
-  
 }
