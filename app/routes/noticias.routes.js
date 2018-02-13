@@ -1,15 +1,17 @@
- //get database info
- const connection =  require('../../config/db')();
-
 //page single noticia
 module.exports = function(app) {
-  app.get('/noticia', function(req, res){
-    connection.query('select * from noticias', function(err, data){
-      if(err){
-        console.log(err);
+  app.get('/noticias', function(req, res){
+
+    //modulo conexão com banco
+    var connection = app.config.db();
+
+    connection.query('select * from noticias', function(err, data){ //sql requisition
+      if(err){ //if there's a error
+        console.log(err); //show error
       } else {
-        res.render("../views/noticias/noticias", {noticias : data});
+        res.render("../views/noticias/noticias", {noticias : data}); //set data to views
       }
     });
   });
+  
 }
