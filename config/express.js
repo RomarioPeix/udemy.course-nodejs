@@ -8,6 +8,7 @@ const consign = require('consign');
  * @name db - Include database connection to routes
  */
 consign().include('app/routes')
+  .then('app/models')
   .then('config/db.js') //!important to put the file extension. otherwise, the 'then' will understand as an folder
   .into(app);
 
