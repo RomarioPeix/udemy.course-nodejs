@@ -1,6 +1,12 @@
 const express = require('express');
 const app = express();
 const consign = require('consign');
+const bodyParser = require('body-parser');
+
+//body parser middleware
+app.use(bodyParser.urlencoded({
+  extended: true, //allow the form information to return like a JSON object
+}));
 
 /**
  * Include dependencies to run on consign - auto-load
@@ -8,6 +14,7 @@ const consign = require('consign');
  * @name db - Include database connection to routes
  */
 consign().include('app/routes')
+  .then('app/models')
   .then('config/db.js') //!important to put the file extension. otherwise, the 'then' will understand as an folder
   .into(app);
 
