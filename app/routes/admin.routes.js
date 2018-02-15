@@ -9,8 +9,11 @@ module.exports = function(application) {
 
       //conexao
       var connection = application.config.db();
+
+      //model
       var noticiasModel = application.app.models.noticiasModel;
 
+      //salvar noticia
       noticiasModel.salvarNoticia(noticia, connection, function(err, data){
         if(err){ //if there's a error
           console.log(err); //show error
@@ -18,9 +21,6 @@ module.exports = function(application) {
           res.redirect('/noticias');
         }     
         });
-      //model
-
-      //salvar noticia
     });
   });
 }
