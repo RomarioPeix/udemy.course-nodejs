@@ -18,6 +18,10 @@ module.exports = function(){
     return connection.query('select * from noticias where id_noticia = 2', callback);
   }
 
+  this.salvarNoticia = function(noticia, connection, callback){
+    return connection.query('insert into noticias set ? ', noticia, callback);
+  }
+
   return this;
 
 }
