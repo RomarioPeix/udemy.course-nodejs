@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 
 //body parser middleware
 app.use(bodyParser.urlencoded({
-  extended: true, //allow the form information to return like a JSON object
+  extended: true, //allow the form information to return as a JSON object
 }));
 
 /**
