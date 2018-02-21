@@ -11,10 +11,10 @@ module.exports = function(application) {
       var connection = application.config.db();
 
       //model
-      var noticiasModel = application.app.models.noticiasModel;
+      var noticiasModel = new application.app.models.noticiasModel(connection);
 
       //salvar noticia
-      noticiasModel.salvarNoticia(noticia, connection, function(err, data){
+      noticiasModel.salvarNoticia(noticia, function(err, data){
         if(err){ //if there's a error
           console.log(err); //show error
         } else {

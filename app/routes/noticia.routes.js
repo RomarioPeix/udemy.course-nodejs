@@ -4,9 +4,9 @@ module.exports = function(application) {
 
     //modulo conexão com banco
     var connection = application.config.db();
-    var noticiasModel = application.app.models.noticiasModel;
+    var noticiasModel = new application.app.models.noticiasModel(connection);
 
-    noticiasModel.getNoticia(connection, function(err, data){ //sql requisition
+    noticiasModel.getNoticia(function(err, data){ //sql requisition
       if(err){ //if there's a error
         console.log(err); //show error
       } else {
