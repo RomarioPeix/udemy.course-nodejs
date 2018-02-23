@@ -20,6 +20,7 @@ app.use(expressValidator());
 consign().include('app/routes')
   .then('app/models')
   .then('config/db.js') //!important to put the file extension. otherwise, the 'then' will understand as an folder
+  .then('app/controllers')
   .into(app);
 
 //set ejs as the view engine for our application views
