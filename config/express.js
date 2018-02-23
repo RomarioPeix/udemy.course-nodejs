@@ -2,11 +2,15 @@ const express = require('express');
 const app = express();
 const consign = require('consign');
 const bodyParser = require('body-parser');
+const expressValidator = require('express-validator');
 
 //body parser middleware
 app.use(bodyParser.urlencoded({
   extended: true, //allow the form information to return like a JSON object
 }));
+
+//express validator middleware
+app.use(expressValidator());
 
 /**
  * Include dependencies to run on consign - auto-load
