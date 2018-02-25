@@ -17,7 +17,11 @@ module.exports.noticia = function (application, req, res){
    var connection = application.config.db();
    var noticiasModel = new application.app.models.noticiasModel(connection);
 
-   noticiasModel.getNoticia(function(err, data){ //sql requisition
+   //get the value from the url
+   //console.log(req.query);
+   var variable = req.query;
+
+   noticiasModel.getNoticia(variable, function(err, data){ //sql requisition
      if(err){ //if there's a error
        console.log(err); //show error
      } else {
