@@ -9,6 +9,8 @@ app.use(bodyParser.urlencoded({
   extended: true, //allow the form information to return like a JSON object
 }));
 
+app.use(express.static('./app/public')); //allow to use the public folder as an static folder from anywhere
+
 //express validator middleware
 app.use(expressValidator());
 
