@@ -7,16 +7,17 @@ function Noticias(connection){
 * @param {Error handler} callback it is the callback/ error handler for your consult
 */
 Noticias.prototype.getNoticias = function(callback){
-  this._connection.query('select * from noticias', callback);
+  this._connection.query('select * from noticias order by data_criacao desc', callback);
 }
 
 /**
 * @description Used for get a single noticia from database
 * @param {Connection Info} connection your db connection
 * @param {Error handler} callback it is the callback/ error handler for your consult
+* @param {ID} query the noticia's Id comming from the url
 */
-Noticias.prototype.getNoticia = function(callback){
-  this._connection.query('select * from noticias where id_noticia = 2', callback);
+Noticias.prototype.getNoticia = function(query, callback){
+  this._connection.query('select * from noticias where id_noticia = ' + query.id_noticia, callback);
 }
 
 /**
@@ -27,6 +28,15 @@ Noticias.prototype.getNoticia = function(callback){
  */
 Noticias.prototype.salvarNoticia = function(noticia, callback){
   this._connection.query('insert into noticias set ? ', noticia, callback);
+}
+
+/**
+* @description Used for get the last noticias added to the database
+* @param {Connection Info} connection your db connection
+* @param {Error handler} callback it is the callback/ error handler for your consult
+ */
+Noticias.prototype.getUltimasNoticias= function(callback){
+  this._connection.query('select * from noticias order by data_criacao desc limit 5', callback)
 }
 
 module.exports = function(){
